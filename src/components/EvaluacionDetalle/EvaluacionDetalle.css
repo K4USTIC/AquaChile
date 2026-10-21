@@ -1,0 +1,103 @@
+/* src/components/EvaluacionDetalle/EvaluacionDetalle.css */
+.evaluacion-container {
+  padding: 2rem;
+  max-width: 1000px;
+  margin: 0 auto;
+  font-family: sans-serif;
+}
+
+.evaluacion-header {
+  margin-bottom: 2rem;
+  border-bottom: 2px solid #eee;
+  padding-bottom: 1rem;
+}
+
+.btn-volver {
+  background: none;
+  border: none;
+  color: #0f2c59;
+  cursor: pointer;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.solicitud-id {
+  color: #666;
+  font-weight: bold;
+}
+
+.evaluacion-grid {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 2rem;
+}
+
+.panel-datos,
+.panel-informe {
+  background: #f8f9fa;
+  padding: 1.5rem;
+  border-radius: 8px;
+  border: 1px solid #dee2e6;
+}
+
+.panel-datos h2,
+.panel-informe h2 {
+  margin-top: 0;
+  color: #0f2c59;
+  font-size: 1.2rem;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.dato-item {
+  margin-bottom: 0.8rem;
+}
+
+.adjuntos-seccion {
+  margin-top: 2rem;
+}
+
+.btn-descargar {
+  background: #e2e8f0;
+  border: 1px solid #cbd5e1;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  width: 100%;
+  text-align: left;
+}
+
+.btn-descargar:hover {
+  background: #cbd5e1;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.form-group select,
+.form-group textarea {
+  padding: 0.8rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-family: inherit;
+}
+
+.btn-guardar {
+  background: #0f2c59;
+  color: white;
+  border: none;
+  padding: 0.8rem 1.5rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+  width: 100%;
+}
+
+.btn-guardar:hover {
+  background: #163a70;
+}
