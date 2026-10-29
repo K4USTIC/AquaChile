@@ -65,7 +65,7 @@
 /* --- ESTILOS DE LA IMAGEN CENTRAL --- */
 .home-hero {
   flex: 1;
-  background-image: url("aquachile.jpg");
+  background-image: url("./aquachile.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;

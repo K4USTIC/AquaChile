@@ -56,3 +56,44 @@ export function validarFormulario(datos) {
 export function formularioTieneErrores(errores) {
   return Object.values(errores).some((error) => error !== null);
 }
+
+// VALIDACIONES PARA EL LOGIN
+
+export function validarCorreoInstitucional(correo) {
+  if (!correo || correo.trim() === "") {
+    return "El correo es obligatorio.";
+  }
+  if (!correo.includes("@aquachile.com")) {
+    return "Acceso permitido solo para correos institucionales (@aquachile.com).";
+  }
+  return null;
+}
+
+export function validarPasswordSegura(password) {
+  if (!password || password.trim() === "") {
+    return "La contraseña es obligatoria.";
+  }
+  if (password.length < 8) {
+    return "La contraseña debe tener al menos 8 caracteres.";
+  }
+  if (!/[A-Z]/.test(password)) {
+    return "Debe incluir al menos una letra mayúscula.";
+  }
+  if (!/[a-z]/.test(password)) {
+    return "Debe incluir al menos una letra minúscula.";
+  }
+  if (!/\d/.test(password)) {
+    return "Debe incluir al menos un número.";
+  }
+  if (!/[!@#$%^&*(),.?":{}|<>]/.test(password)) {
+    return "Debe incluir al menos un carácter especial (ej: @, #, $, %).";
+  }
+  return null;
+}
+
+export function validarFormularioLogin(datos) {
+  return {
+    correo: validarCorreoInstitucional(datos.correo),
+    password: validarPasswordSegura(datos.password),
+  };
+}

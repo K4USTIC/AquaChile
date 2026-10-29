@@ -1,30 +1,29 @@
 // src/components/login/login.jsx
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { validarFormularioLogin, formularioTieneErrores } from "../../utils/validaciones";
 import "./login.css";
 
 function Login() {
   const [correo, setCorreo] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
+  const [errores, setErrores] = useState({}); // Ahora manejamos un objeto de errores
   const navigate = useNavigate();
 
   const handleLogin = (e) => {
     e.preventDefault();
-    setError("");
+    
+    const datosFormulario = { correo, password };
+    const nuevosErrores = validarFormularioLogin(datosFormulario);
+    setErrores(nuevosErrores);
 
-    if (!correo.trim() || !password.trim()) {
-      setError("Por favor ingrese correo y contraseña.");
+    // Si la función detecta algún error, detenemos el ingreso
+    if (formularioTieneErrores(nuevosErrores)) {
       return;
     }
 
-    if (correo.includes("@aquachile.com")) {
-      navigate("/dashboard");
-    } else {
-      setError(
-        "Acceso permitido solo para correos institucionales (@aquachile.com)"
-      );
-    }
+    // Si pasa todas las validaciones, ingresa al Dashboard
+    navigate("/dashboard");
   };
 
   return (
@@ -32,9 +31,7 @@ function Login() {
       <div className="login-card">
         <div className="login-header">
           <h1 className="login-title">AquaChile</h1>
-          <p className="login-subtitle">
-            Acceso Exclusivo Selección y Evaluación
-          </p>
+          <p className="login-subtitle">Acceso Exclusivo Selección y Evaluación</p>
         </div>
 
         <form onSubmit={handleLogin} className="login-form" noValidate>
@@ -47,6 +44,8 @@ function Login() {
               onChange={(e) => setCorreo(e.target.value)}
               placeholder="usuario@aquachile.com"
             />
+            {/* Mensaje de error individual para el correo */}
+            {errores.correo && <p className="login-error-text">{errores.correo}</p>}
           </div>
 
           <div className="form-group">
@@ -58,9 +57,9 @@ function Login() {
               onChange={(e) => setPassword(e.target.value)}
               placeholder="••••••••"
             />
+            {/* Mensaje de error individual para la contraseña */}
+            {errores.password && <p className="login-error-text">{errores.password}</p>}
           </div>
-
-          {error && <p className="login-error">{error}</p>}
 
           <button type="submit" className="login-btn">
             Ingresar al Panel
@@ -68,13 +67,9 @@ function Login() {
         </form>
 
         <div className="login-demo">
+          <p><strong>Modo de prueba (Demo):</strong></p>
           <p>
-            <strong>Modo de prueba (Demo):</strong>
-          </p>
-          <p>
-            Ingresa cualquier correo con <code>@aquachile.com</code> (ej:{" "}
-            <code>evaluador@aquachile.com</code>) y cualquier clave para
-            ingresar al Dashboard.
+            Ingresa un correo <code>@aquachile.com</code> y una clave válida (ej: <code>AquaChile2026!</code>) para ingresar al Dashboard.
           </p>
         </div>
       </div>

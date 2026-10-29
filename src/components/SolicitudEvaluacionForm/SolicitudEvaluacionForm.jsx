@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import FormField from "./FormField";
 import FileUploadField from "./FileUploadField";
 import { FAMILIAS_DE_CARGO } from "../../constants/familiasDeCargo";
+import { CARGOS_POR_FAMILIA } from "../../constants/nombresDelCargo"; // <-- Lo importamos desde tu archivo
 import {
   validarFormulario,
   formularioTieneErrores,
@@ -24,7 +25,18 @@ function SolicitudEvaluacionForm() {
 
   function handleChange(e) {
     const { name, value } = e.target;
-    setDatos((prev) => ({ ...prev, [name]: value }));
+    
+    setDatos((prev) => {
+      const nuevosDatos = { ...prev, [name]: value };
+      
+      // Si el usuario cambia la Familia de Cargo, reseteamos el Nombre del Cargo
+      if (name === "familiaCargo") {
+        nuevosDatos.nombreCargo = "";
+      }
+      
+      return nuevosDatos;
+    });
+    
     setEnvioExitoso(false);
   }
 
@@ -52,6 +64,11 @@ function SolicitudEvaluacionForm() {
     setErrores({});
     setFileInputKey(Date.now());
   }
+
+  // Calculamos las opciones dinámicas según la familia seleccionada
+  const opcionesCargoDinamicas = datos.familiaCargo && CARGOS_POR_FAMILIA[datos.familiaCargo] 
+    ? CARGOS_POR_FAMILIA[datos.familiaCargo] 
+    : [];
 
   return (
     <div className="solicitud-form-container">
@@ -85,10 +102,12 @@ function SolicitudEvaluacionForm() {
         <FormField
           label="Nombre del cargo"
           name="nombreCargo"
+          as="select" 
           value={datos.nombreCargo}
           onChange={handleChange}
           error={errores.nombreCargo}
-          placeholder="Ej: Analista de Recursos Humanos"
+          options={opcionesCargoDinamicas}
+          disabled={!datos.familiaCargo} // Se bloquea si no hay familia seleccionada
         />
 
         <FileUploadField
