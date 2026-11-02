@@ -1,0 +1,109 @@
+/* src/components/SolicitudEvaluacionForm/SolicitudEvaluacionForm.css */
+
+.solicitud-form-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 100vh;
+  background-color: #f4f6f8;
+  padding: 40px 16px;
+  font-family: "Segoe UI", Arial, sans-serif;
+  box-sizing: border-box;
+}
+
+.solicitud-form {
+  background-color: #ffffff;
+  width: 100%;
+  max-width: 480px;
+  padding: 32px;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+  border: 1px solid #e2e6ea;
+}
+
+.solicitud-form__title {
+  font-size: 22px;
+  font-weight: 600;
+  color: #1f3a5f;
+  margin: 0 0 8px 0;
+  text-align: center;
+}
+
+.solicitud-form__subtitle {
+  font-size: 14px;
+  color: #5a6472;
+  margin: 0 0 28px 0;
+  text-align: center;
+}
+
+.form-field {
+  margin-bottom: 18px;
+  display: flex;
+  flex-direction: column;
+}
+
+.form-field__label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #33404f;
+  margin-bottom: 6px;
+}
+
+.form-field__input,
+.form-field__file {
+  padding: 10px 12px;
+  border: 1px solid #ccd3da;
+  border-radius: 5px;
+  font-size: 14px;
+  color: #1f2a36;
+  background-color: #fbfcfd;
+  transition: border-color 0.15s ease;
+}
+
+.form-field__input:focus,
+.form-field__file:focus {
+  outline: none;
+  border-color: #2e5a8f;
+}
+
+.form-field__input--error {
+  border-color: #c0392b;
+}
+
+.form-field__error {
+  color: #c0392b;
+  font-size: 12.5px;
+  margin-top: 4px;
+}
+
+.form-field__file-name {
+  font-size: 13px;
+  color: #33404f;
+  margin-top: 6px;
+}
+
+.solicitud-form__submit {
+  width: 100%;
+  padding: 12px;
+  margin-top: 10px;
+  background-color: #1f3a5f;
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+}
+
+.solicitud-form__submit:hover {
+  background-color: #163050;
+}
+
+.solicitud-form__success {
+  margin-top: 16px;
+  text-align: center;
+  color: #1e7e34;
+  font-size: 14px;
+  font-weight: 500;
+}

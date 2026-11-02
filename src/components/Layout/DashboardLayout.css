@@ -1,0 +1,73 @@
+/* src/components/Layout/DashboardLayout.css */
+.layout-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+  
+  .app-nav {
+    background-color: #0f2c59; /* Azul corporativo */
+    color: white;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  }
+  
+  .app-nav__brand {
+    font-size: 1.2rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+  }
+  
+  .app-nav__links a {
+    color: #e0e0e0;
+    text-decoration: none;
+    margin-right: 1.5rem;
+    font-weight: 500;
+    transition: color 0.2s;
+  }
+  
+  .app-nav__links a:hover {
+    color: white;
+  }
+  
+  .app-nav__links a.active {
+    color: white;
+    font-weight: bold;
+    border-bottom: 2px solid white;
+    padding-bottom: 4px;
+  }
+  
+  .app-nav__user-section {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+  }
+  
+  .app-nav__user {
+    font-size: 0.9rem;
+    color: #ccc;
+  }
+  
+  .btn-salir {
+    background-color: transparent;
+    border: 1px solid white;
+    color: white;
+    padding: 0.4rem 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: all 0.2s;
+  }
+  
+  .btn-salir:hover {
+    background-color: white;
+    color: #0f2c59;
+  }
+  
+  .page-content {
+    flex: 1;
+    background-color: #f8f9fa;
+  }
